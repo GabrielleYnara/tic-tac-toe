@@ -1,0 +1,19 @@
+
+body {
+    background-color: #363636;
+    color: rgb(219, 219, 219);
+}
+
+h1 {
+    text-align: center;
+}
+.game{
+    display: flex;
+    justify-content: space-around;
+}
+
+.board-game {
+    width: 390px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
