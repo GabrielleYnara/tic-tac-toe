@@ -18,5 +18,6 @@ playBtn.addEventListener("click", () => {
 for (child of boardGame.children){
     child.addEventListener("mouseenter", game.handleMouseEnter);
     child.addEventListener("mouseleave", game.handleMouseLeave);
+    child.addEventListener("click", (event) => game.handleClick(event));
 }
 

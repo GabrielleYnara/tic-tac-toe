@@ -13,7 +13,15 @@ h1 {
 .game {
     display: flex;
     justify-content: space-around;
-    visibility: hidden
+    visibility: hidden;
+}
+
+.board-game {
+    width: 390px;
+    height: 390px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
 }
 
 /* adds border to specific divs to show a tic-tac-toe grid */
@@ -29,18 +37,19 @@ h1 {
     border: 3px solid #dcdcdc;
 }
 
-.board-game {
-    width: 390px;
-    height: 390px;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
+/* position the element inside each div on the board*/
+.board-game div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.marker{
+    font-size: 3em;
+}
 button {
     align-self: center;
     padding: 1em 3em; /* top&bottom left&right */
-    margin-top: 3em;
+    margin-top: 4em;
 }
 
 /* .line1 {
