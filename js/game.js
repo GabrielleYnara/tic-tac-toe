@@ -17,6 +17,7 @@ class Game {
             child.classList.add("game-on")
         }
         document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`; //indicates active player
+        
     }
 
     handleMouseEnter(element) {
@@ -36,8 +37,7 @@ class Game {
         document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`;
         let result = this.checkWinner();
         if(result){
-            alert(`${result.icon} Won!`)
-            this.resetBoard();
+            alert(`${result.icon} Won!`);
         }
     }
 
@@ -125,13 +125,13 @@ class Game {
             }
         }
     }
+
     resetBoard(){
         const positions = document.querySelectorAll(".board-game div");
         positions.forEach(element => {
             if(element.children.length){ //if it was populated
                 element.innerHTML = "";
             }
-            console.log(element);
         })
     }
 }
