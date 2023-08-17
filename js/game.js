@@ -29,18 +29,20 @@ class Game {
     
     // The selected location is marked, and it switches to the other player.
     handleClick(element) {
-        let p = document.createElement("p");
-        p.innerHTML = this.activeTurn.icon;
-        p.className = "marker";
-        element.target.append(p);
-        this.activeTurn = this.players.find(player => player.name != this.activeTurn.name);
-        document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`;
-        let result = this.checkWinner();
-        if(typeof result === "object"){
-            this.showResult(`${result.icon} Won!`);
-        }
-        if(result === "Tie"){
-            this.showResult("It's a Tie!");
+        if(!element.target.hasChildNodes()){ //Just if spot is free
+            let p = document.createElement("p");
+            p.innerHTML = this.activeTurn.icon;
+            p.className = "marker";
+            element.target.append(p);
+            this.activeTurn = this.players.find(player => player.name != this.activeTurn.name);
+            document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`;
+            let result = this.checkWinner();
+            if(typeof result === "object"){
+                this.showResult(`${result.icon} Won!`);
+            }
+            if(result === "Tie"){
+                this.showResult("It's a Tie!");
+            }
         }
     }
 
@@ -163,5 +165,6 @@ class Game {
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
  * https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+ * https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes
  * 
  */
