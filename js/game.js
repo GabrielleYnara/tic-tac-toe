@@ -37,10 +37,10 @@ class Game {
         document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`;
         let result = this.checkWinner();
         if(typeof result === "object"){
-            alert(`${result.icon} Won!`);
+            this.showResult(`${result.icon} Won!`);
         }
         if(result === "Tie"){
-            alert("It's a Tie!");
+            this.showResult("It's a Tie!");
         }
     }
 
@@ -135,9 +135,7 @@ class Game {
                 counter++
             }
         });
-        console.log(counter);
         if (counter === 9) {
-            console.log("All positions marked!")
             return "Tie";
         }
 
@@ -145,7 +143,7 @@ class Game {
         //Verify if all items have children - meaning all the spots have been populated
     }
     
-    resetBoard(){
+    resetBoard() {
         const positions = document.querySelectorAll(".board-game div");
         positions.forEach(element => {
             if(element.children.length){ //if it was populated
@@ -153,10 +151,17 @@ class Game {
             }
         });
     }
+
+    showResult(message) {
+        setTimeout(() => {
+            alert(message);
+        }, 0); //Waits untill the stack is clear to execute, meaning it will render stuff first
+    }
 }
 
 /** References
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
+ * https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
  * 
  */
