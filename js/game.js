@@ -10,16 +10,6 @@ class Game {
         return alert("You need two players");
     }
 
-    startGame() { // habilitates the grid (boardgame)
-        let gameDiv = document.querySelector(".game");
-        gameDiv.style.visibility = "visible";
-        for (let child of boardGame.children){ // should I reference boardGame in another way?
-            child.classList.add("game-on")
-        }
-        document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`; //indicates active player
-        
-    }
-
     handleMouseEnter(element) {
         element.target.style.backgroundColor = "rgba(139, 139, 139, 0.2)";
     }
@@ -48,7 +38,7 @@ class Game {
 
     checkWinner() {
         const positions = document.querySelectorAll(".board-game div");
-
+        let counter = 0;
         //Top Row
         if(positions[0].children.length && positions[1].children.length && positions[2].children.length){ // Make sure there's a child tag to handle
             if (positions[0].children[0].innerHTML === positions[1].children[0].innerHTML && 
@@ -129,30 +119,18 @@ class Game {
                 return winner;
             }
         }
-        console.log();
-
-        let counter = 0;
-        positions.forEach((element) => {
+        //Tie
+        positions.forEach((element) => { //Verify if all the spots have been populated
             if(element.children.length === 1){
                 counter++
             }
         });
         if (counter === 9) {
             return "Tie";
-        }
-
-        //Tie
-        //Verify if all items have children - meaning all the spots have been populated
+        } 
     }
     
-    resetBoard() {
-        const positions = document.querySelectorAll(".board-game div");
-        positions.forEach(element => {
-            if(element.children.length){ //if it was populated
-                element.innerHTML = "";
-            }
-        });
-    }
+    
 
     showResult(message) {
         setTimeout(() => {
@@ -166,5 +144,6 @@ class Game {
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
  * https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
  * https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
  * 
  */
