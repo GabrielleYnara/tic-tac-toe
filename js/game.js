@@ -36,8 +36,11 @@ class Game {
         this.activeTurn = this.players.find(player => player.name != this.activeTurn.name);
         document.querySelector(".active-player").innerHTML = `${this.activeTurn.icon} is playing`;
         let result = this.checkWinner();
-        if(result){
+        if(typeof result === "object"){
             alert(`${result.icon} Won!`);
+        }
+        if(result === "Tie"){
+            alert("It's a Tie!");
         }
     }
 
@@ -104,7 +107,7 @@ class Game {
                 return winner;
             }
         }
-        //Diagonal 159
+        //Diagonal 
         if(positions[0].children.length && positions[4].children.length && positions[8].children.length){ // Make sure there's a child tag to handle
             if (positions[0].children[0].innerHTML === positions[4].children[0].innerHTML && 
                 positions[0].children[0].innerHTML === positions[8].children[0].innerHTML) {
@@ -114,7 +117,7 @@ class Game {
                 return winner;
             }
         }
-        //Counter-Diagonal 753
+        //Counter-Diagonal 
         if(positions[2].children.length && positions[4].children.length && positions[6].children.length){ // Make sure there's a child tag to handle
             if (positions[2].children[0].innerHTML === positions[4].children[0].innerHTML && 
                 positions[2].children[0].innerHTML === positions[6].children[0].innerHTML) {
@@ -124,15 +127,31 @@ class Game {
                 return winner;
             }
         }
-    }
+        console.log();
 
+        let counter = 0;
+        positions.forEach((element) => {
+            if(element.children.length === 1){
+                counter++
+            }
+        });
+        console.log(counter);
+        if (counter === 9) {
+            console.log("All positions marked!")
+            return "Tie";
+        }
+
+        //Tie
+        //Verify if all items have children - meaning all the spots have been populated
+    }
+    
     resetBoard(){
         const positions = document.querySelectorAll(".board-game div");
         positions.forEach(element => {
             if(element.children.length){ //if it was populated
                 element.innerHTML = "";
             }
-        })
+        });
     }
 }
 
