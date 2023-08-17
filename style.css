@@ -8,14 +8,21 @@ body {
 }
 
 h1 {
-    text-align: center;
+    align-self: center;
 }
 .game {
     display: flex;
     justify-content: space-around;
     visibility: hidden;
 }
-
+.active-player {
+    width: 118px;
+    font-size: 1.5em;
+    align-self: center;
+}
+.score {
+    width: 118px;
+}
 .board-game {
     width: 390px;
     height: 390px;
@@ -36,6 +43,7 @@ h1 {
 .line2.column2.game-on {
     border: 3px solid #dcdcdc;
 }
+
 
 /* position the element inside each div on the board*/
 .board-game div {
