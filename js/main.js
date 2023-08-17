@@ -1,6 +1,7 @@
 const player1 = new User("Player 1", "X");
 const player2 = new User("Player 2", "O");
 const game = new Game([player1, player2]);
+let hasWinner = undefined;
 
 const playBtn = document.querySelector("#play");
 const resetBtn = document.querySelector("#reset");
@@ -20,7 +21,7 @@ playBtn.addEventListener("click", () => {
 for (child of boardGame.children) {//loops through all the divs
     child.addEventListener("mouseenter", handleMouseEnter);
     child.addEventListener("mouseleave", handleMouseLeave);
-    child.addEventListener("click", (event) => handleClick(event));
+    child.addEventListener("click", handleClick);
 }
 function handleMouseEnter(element) {
     element.target.style.backgroundColor = "rgba(139, 139, 139, 0.2)";
@@ -30,18 +31,18 @@ function handleMouseLeave(element) {
 }
 // The selected location is marked and switches to the other player's turn.
 function handleClick(element) {
-    if(!element.target.hasChildNodes()){ //Just if spot is free
+    if(!element.target.hasChildNodes() && hasWinner === undefined){ //Just if spot is free
         let p = document.createElement("p");
         p.innerHTML = game.activeTurn.icon;
         p.className = "marker";
         element.target.append(p);
         game.activeTurn = game.players.find(player => player.name != game.activeTurn.name);
         document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} is playing`;
-        let result = checkWinner();
-        if(typeof result === "object"){
-            showResult(`${result.icon} Won!`);
+        hasWinner = checkWinner();
+        if(hasWinner && hasWinner != "Tie"){
+            showResult(`${hasWinner.icon} Won!`);
         }
-        if(result === "Tie"){
+        if(hasWinner === "Tie"){
             showResult("It's a Tie!");
         }
     }
@@ -83,6 +84,7 @@ function resetBoard(option) {
                 element.innerHTML = "";
             }
         });
+        hasWinner = undefined;
     }
 }
 //checks if there's a winner
@@ -185,3 +187,13 @@ function showResult(message) {
         alert(message);
     }, 0); //Waits untill the stack is clear to execute, meaning it will render stuff first
 }
+
+
+/** References
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
+ * https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+ * https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+ * 
+ */
