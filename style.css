@@ -71,6 +71,34 @@ dialog > p {
 #gameResult > p {
     font-size: 2em;
 }
+
+@media (max-width: 600px) {
+    h1 {
+        order: 0;
+    }
+    #play {
+        order: 1;
+    }
+    #reset{
+        order: 3;
+    }
+    .game {
+        order: 2;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column-reverse ;
+    }
+    .active-player {
+        margin-bottom: 2em;;
+    }
+    .score {
+        margin-top: 2em;
+        margin-left: 1em;
+    }
+    .board-game {
+        margin: auto;
+    }
+}
 /** References
 https://cssgridgarden.com/
 https://codepip.com/games/flexbox-froggy/
