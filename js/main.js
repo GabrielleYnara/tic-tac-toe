@@ -50,8 +50,7 @@ function handleClick(element) {
 
 //When User clicks on Reset button
 resetBtn.addEventListener("click", () => {
-    confirmReset.showModal();
-    
+    resetBoard();
 });
 //if User give up on reseting the board
 noResetBtn.addEventListener("click", (event) => {
@@ -76,8 +75,14 @@ function startGame() {
 }
 // cleans the spots
 function resetBoard(option) {
-    //on going game
-    if(typeof option === "object" || option === "Tie" || option.toLowerCase() === "yes" ){
+    //on going game, confirms if the User wants to restart
+    if(!hasWinner){
+        confirmReset.showModal();
+    }
+    if(!option){
+        option = "";
+    }
+    if(hasWinner || option.toLowerCase() === "yes" ){
         const positions = document.querySelectorAll(".board-game div");
         positions.forEach(element => {
             if(element.children.length){ //if it was populated
