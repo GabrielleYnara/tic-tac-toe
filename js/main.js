@@ -11,6 +11,9 @@ const gameResult = document.querySelector("#gameResult"); //Modal
 const confirmBtn = document.querySelector("#confirmBtn");
 const noResetBtn = document.querySelector("#noResetBtn");
 const closeResult = document.querySelector("#closeResult");
+const scorePlayerX = document.querySelector("#Xplayer");
+const scorePlayerO = document.querySelector("#Oplayer");
+const scoreTie = document.querySelector("#Tie");
 
 //Starts the game, toggles visibility of reset and play button
 playBtn.addEventListener("click", () => {
@@ -41,6 +44,12 @@ function handleClick(element) {
         game.activeTurn = game.players.find(player => player.name != game.activeTurn.name);
         document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} is playing`;
         hasWinner = checkWinner();
+        if(hasWinner){
+            let winner = game.registerScore(hasWinner);
+            scorePlayerX.innerHTML = winner.player1;
+            scorePlayerO.innerHTML = winner.player2;
+            scoreTie.innerHTML = winner.tie;
+        }
         if(hasWinner && hasWinner != "Tie"){
             showResult(`${hasWinner.icon} Won!`);
         }

@@ -22,6 +22,18 @@ h1 {
 }
 .score {
     width: 118px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 2em repeat(2, 1.5em);
+    grid-gap: 1px;
+    text-align: center;
+}
+.score > h3 {
+    grid-column: 1 / 4;
+}
+.middle-column {
+    border-left: 3px solid #dcdcdc;
+    border-right: 3px solid #dcdcdc;
 }
 .board-game {
     width: 390px;
@@ -59,6 +71,7 @@ button {
     padding: 1em 3em; /* top&bottom left&right */
     margin-top: 4em;
     border-radius: 5px;
+    font-size: 1em;
 }
 
 dialog {
@@ -72,7 +85,7 @@ dialog > p {
     font-size: 2em;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     h1 {
         order: 0;
     }
