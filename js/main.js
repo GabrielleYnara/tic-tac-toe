@@ -7,8 +7,10 @@ const playBtn = document.querySelector("#play");
 const resetBtn = document.querySelector("#reset");
 const boardGame = document.querySelector(".board-game");
 const confirmReset = document.querySelector("#confirmReset"); //Modal
+const gameResult = document.querySelector("#gameResult"); //Modal
 const confirmBtn = document.querySelector("#confirmBtn");
 const noResetBtn = document.querySelector("#noResetBtn");
+const closeResult = document.querySelector("#closeResult");
 
 //Starts the game, toggles visibility of reset and play button
 playBtn.addEventListener("click", () => {
@@ -63,7 +65,14 @@ confirmBtn.addEventListener("click", (event) => {
     resetBoard("yes");
     confirmReset.close();
 });
-
+// Player clicks to close the Modal window
+closeResult.addEventListener("click", () => {
+    gameResult.close();
+});
+playAgain.addEventListener("click", () => {
+    resetBoard("yes");
+    gameResult.close();
+});
 // habilitates the grid (boardgame)
 function startGame() {
     let gameDiv = document.querySelector(".game");
@@ -79,7 +88,7 @@ function resetBoard(option) {
     if(!hasWinner){
         confirmReset.showModal();
     }
-    if(!option){
+    if(!option){ //to avoid undefined error when option is empty
         option = "";
     }
     if(hasWinner || option.toLowerCase() === "yes" ){
@@ -188,9 +197,11 @@ function checkWinner() {
 }
 //Shows the result of the match
 function showResult(message) {
-    setTimeout(() => {
-        alert(message);
-    }, 0); //Waits untill the stack is clear to execute, meaning it will render stuff first
+    gameResult.children[0].innerHTML = message;
+    gameResult.showModal();
+    // setTimeout(() => {
+    //     alert(message);
+    // }, 0); //Waits untill the stack is clear to execute, meaning it will render stuff first
 }
 
 
