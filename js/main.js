@@ -3,7 +3,8 @@ const player2 = new User("Player 2", "O");
 const game = new Game([player1, player2]);
 let hasWinner = undefined;
 
-const playBtn = document.querySelector("#play");
+const xIcon = document.querySelector("#xIcon");
+const oIcon = document.querySelector("#oIcon");
 const resetBtn = document.querySelector("#reset");
 const boardGame = document.querySelector(".board-game");
 const confirmReset = document.querySelector("#confirmReset"); //Modal
@@ -15,13 +16,33 @@ const scorePlayerX = document.querySelector("#Xplayer");
 const scorePlayerO = document.querySelector("#Oplayer");
 const scoreTie = document.querySelector("#Tie");
 
-//Starts the game, toggles visibility of reset and play button
-playBtn.addEventListener("click", () => {
-    playBtn.setAttribute("hidden", "true");
+//Starts the game with X icon, toggles visibility off and shows reset button
+xIcon.addEventListener("click", () => {
+    xIcon.setAttribute("hidden", "true");
+    oIcon.setAttribute("hidden", "true");
     resetBtn.removeAttribute("hidden");
+    startGame(game);// game already starts with X playing
+});
+xIcon.addEventListener("mouseenter", (element) => {
+    element.target.style.backgroundColor = "#dcdcdc";
+});
+xIcon.addEventListener("mouseleave", (element) => {
+    element.target.style.backgroundColor = "#b8b7b7";
+});
+//Starts the game with O icon, toggles visibility off and shows reset button
+oIcon.addEventListener("click", () => {
+    xIcon.setAttribute("hidden", "true");
+    oIcon.setAttribute("hidden", "true");
+    resetBtn.removeAttribute("hidden");
+    game.activeTurn = player2;
     startGame(game);
 });
-
+oIcon.addEventListener("mouseenter", (element) => {
+    element.target.style.backgroundColor = "#dcdcdc";
+});
+oIcon.addEventListener("mouseleave", (element) => {
+    element.target.style.backgroundColor = "#b8b7b7";
+});
 //Event listeners to highlight the potential spot
 for (child of boardGame.children) {//loops through all the divs
     child.addEventListener("mouseenter", handleMouseEnter);
@@ -208,9 +229,6 @@ function checkWinner() {
 function showResult(message) {
     gameResult.children[0].innerHTML = message;
     gameResult.showModal();
-    // setTimeout(() => {
-    //     alert(message);
-    // }, 0); //Waits untill the stack is clear to execute, meaning it will render stuff first
 }
 
 

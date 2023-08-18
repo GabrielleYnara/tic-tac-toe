@@ -15,8 +15,6 @@ class Game {
     }
 
     registerScore(winner) {
-        console.log(winner)
-        console.log(winner === this.players[0]);
         switch(winner) {
             case this.players[0]:
                 this.score.player1++;

@@ -10,6 +10,16 @@ body {
 h1 {
     align-self: center;
 }
+.icon-choice{
+    display: flex;
+    justify-content: center;
+}
+.icon-choice > button {
+    padding: 0.5em 1.5em;
+    background-color: #b8b7b7;
+    font-weight: bold;
+    font-size: 1.5em;
+}
 .game {
     display: flex;
     justify-content: space-around;
@@ -32,8 +42,8 @@ h1 {
     grid-column: 1 / 4;
 }
 .middle-column {
-    border-left: 3px solid #dcdcdc;
-    border-right: 3px solid #dcdcdc;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
 }
 .board-game {
     width: 390px;
@@ -89,7 +99,7 @@ dialog > p {
     h1 {
         order: 0;
     }
-    #play {
+    .icon-choice{
         order: 1;
     }
     #reset{
@@ -111,6 +121,7 @@ dialog > p {
     .board-game {
         margin: auto;
     }
+
 }
 /** References
 https://cssgridgarden.com/
