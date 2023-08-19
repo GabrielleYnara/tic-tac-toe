@@ -20,41 +20,33 @@ const scoreTie = document.querySelector("#Tie");
 xIcon.addEventListener("click", () => {
     xIcon.setAttribute("hidden", "true");
     oIcon.setAttribute("hidden", "true");
+    document.querySelector("#choice-label").style.display="none";
     resetBtn.removeAttribute("hidden");
     startGame(game);// game already starts with X playing
 });
-xIcon.addEventListener("mouseenter", (element) => {
-    element.target.style.backgroundColor = "#dcdcdc";
-});
-xIcon.addEventListener("mouseleave", (element) => {
-    element.target.style.backgroundColor = "#b8b7b7";
-});
+
 //Starts the game with O icon, toggles visibility off and shows reset button
 oIcon.addEventListener("click", () => {
     xIcon.setAttribute("hidden", "true");
     oIcon.setAttribute("hidden", "true");
+    document.querySelector("#choice-label").style.display="none";
     resetBtn.removeAttribute("hidden");
     game.activeTurn = player2;
     startGame(game);
 });
-oIcon.addEventListener("mouseenter", (element) => {
-    element.target.style.backgroundColor = "#dcdcdc";
-});
-oIcon.addEventListener("mouseleave", (element) => {
-    element.target.style.backgroundColor = "#b8b7b7";
-});
+
 //Event listeners to highlight the potential spot
 for (child of boardGame.children) {//loops through all the divs
-    child.addEventListener("mouseenter", handleMouseEnter);
-    child.addEventListener("mouseleave", handleMouseLeave);
+    // child.addEventListener("mouseenter", handleMouseEnter);
+    // child.addEventListener("mouseleave", handleMouseLeave);
     child.addEventListener("click", handleClick);
 }
-function handleMouseEnter(element) {
-    element.target.style.backgroundColor = "rgba(139, 139, 139, 0.2)";
-}
-function handleMouseLeave(element) {
-    element.target.style.backgroundColor = "";
-}
+// function handleMouseEnter(element) {
+//     element.target.style.backgroundColor = "rgba(139, 139, 139, 0.2)";
+// }
+// function handleMouseLeave(element) {
+//     element.target.style.backgroundColor = "";
+// }
 // The selected location is marked and switches to the other player's turn.
 function handleClick(element) {
     if(!element.target.hasChildNodes() && hasWinner === undefined){ //Just if spot is free
@@ -63,7 +55,7 @@ function handleClick(element) {
         p.className = "marker";
         element.target.append(p);
         game.activeTurn = game.players.find(player => player.name != game.activeTurn.name);
-        document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} is playing`;
+        document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} 's turn`;
         hasWinner = checkWinner();
         if(hasWinner){
             let winner = game.registerScore(hasWinner);
@@ -110,7 +102,7 @@ function startGame() {
     for (let child of boardGame.children){ // should I reference boardGame in another way?
         child.classList.add("game-on");
     }
-    document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} is playing`; //indicates active player
+    document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} 's turn`; //indicates active player
 }
 // cleans the spots
 function resetBoard(option) {

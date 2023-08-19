@@ -7,57 +7,60 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 </head>
-<body>
-    <h1>Tic-Tac-Toe</h1>
-    <div class="game">
-        <div class="score">
-            <h3>Score</h3>
-            <p>X</p>
-            <p class="middle-column">O</p>
-            <p>Tie</p>
-            <p id="Xplayer">0</p>
-            <p id="Oplayer" class="middle-column">0</p>
-            <p id="Tie">0</p>
-        </div>
-        <div class="board-game">
-            <div class="line1 column1"></div>
-            <div class="line1 column2"></div>
-            <div class="line1 column3"></div>
-            <div class="line2 column1"></div>
-            <div class="line2 column2"></div>
-            <div class="line2 column3"></div>
-            <div class="line3 column1"></div>
-            <div class="line3 column2"></div>
-            <div class="line3 column3"></div>
-        </div>
-        <dialog id="confirmReset">
- 
-                <p>Are you sure?</p>
-                <div>
-                    <button value="cancel" id="noResetBtn">Cancel</button>
-                    <button value="yes" id="confirmBtn">Yep!</button>
+<body id="paper">
+    <div id="pattern">
+        <div id="content">
+            <h1>Tic-Tac-Toe</h1>
+            <div class="game">
+                <div class="score">
+                    <h3>Score</h3>
+                    <p>X</p>
+                    <p>O</p>
+                    <p>Tie</p>
+                    <p id="Xplayer">0</p>
+                    <p id="Oplayer">0</p>                        
+                    <p id="Tie">0</p>
+                </div>
+                <div class="board-game">
+                    <div class="line1 column1"></div>
+                    <div class="line1 column2"></div>
+                    <div class="line1 column3"></div>                        
+                    <div class="line2 column1"></div>
+                    <div class="line2 column2"></div>
+                    <div class="line2 column3"></div>
+                    <div class="line3 column1"></div>
+                    <div class="line3 column2"></div>
+                    <div class="line3 column3"></div>                    
                 </div>
 
-        </dialog>
-        <dialog id="gameResult">
-            <p></p>
-            <div>
-                <button value="close" id="closeResult">Close</button>
-                <button value="yes" id="playAgain">Play Again</button>
-            </div>
-        </dialog>
-        <div class="active-player">
-            <p>'x' is playing</p>
-        </div>
-        
-    </div>
-    <!-- <button id="play">Play</button> -->
-    <div class="icon-choice">
-        <button id="xIcon">X</button>
-        <button id="oIcon">O</button>
-    </div>
-    <button id="reset" hidden>Restart</button>
+                <dialog id="confirmReset">
+                    <p>Are you sure?</p>
+                    <div>
+                        <button value="cancel" id="noResetBtn">Cancel</button>
+                        <button value="yes" id="confirmBtn">Yep!</button>
+                    </div>
+                </dialog>
+                <dialog id="gameResult">
+                    <p></p>
+                    <div>
+                        <button value="close" id="closeResult">Close</button>
+                        <button value="yes" id="playAgain">Play Again</button>
+                    </div>
+                </dialog>
 
+                <div class="active-player">
+                    <p>'x' is playing</p>
+                </div>
+            
+            </div>
+            <h2 class="icon-choice" id="choice-label">Make your choice</h2>
+            <div class="icon-choice">
+                <button id="xIcon">X</button>
+                <button id="oIcon">O</button>
+            </div>
+            <button id="reset" hidden>Restart</button>
+        </div>
+    </div>
     <script src="./js/user.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/main.js"></script>

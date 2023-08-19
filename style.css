@@ -1,8 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap');
 
-body {
-    background-color: #363636;
-    color: rgb(219, 219, 219);
+/* Styling paper*/
+body{
+    background-color: #F1EDE9;
+}
+#paper{
+    width: 100%;
+    height: 100vh;
+}
+/* styling red vertical line */
+#paper::before {
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background-color: rgba(255,0,0,0.6);
+}
+/* styling blue horizontal lines */
+#pattern {
+    height: 100%;
+    background-image: repeating-linear-gradient(#F1EDE9, #F1EDE9 31px, #94ACD4 31px, #94ACD4 32px);
+}
+
+/*Stryling content*/
+#content {
     display: flex;
     flex-direction: column;
     font-family: 'Indie Flower', cursive;
@@ -10,7 +33,7 @@ body {
 
 h1 {
     align-self: center;
-    font-size: 3em;
+    font-size: 3.5em;
 }
 .icon-choice{
     display: flex;
@@ -18,11 +41,15 @@ h1 {
 }
 .icon-choice > button {
     padding: 0.25em 1.25em;
-    background-color: #b8b7b7;
+    /* background-color: #b8b7b7; */
     font-weight: bold;
     font-size: 2.3em;
     font-family: 'Indie Flower', cursive;
+    margin: 0 5px;
 
+}
+.icon-choice > button:hover {
+    background-color: #fcf6f1;
 }
 .game {
     display: flex;
@@ -30,26 +57,28 @@ h1 {
     visibility: hidden;
 }
 .active-player {
-    width: 140px;
-    font-size: 1.75em;
+    width: 200px;
+    font-size: 2.75em;
     align-self: center;
+    line-height: 31px;
+    margin-top: -23px;
 }
+
+/* Styling Score panel*/
 .score {
-    width: 140px;
+    width: 200px;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 2em repeat(2, 1.5em);
+    grid-template-rows: 2em 1em 1em;
     grid-gap: 1px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 2em;
 }
 .score > h3 {
     grid-column: 1 / 4;
+    margin-top: 25px;
 }
-.middle-column {
-    border-left: 1px solid #dcdcdc;
-    border-right: 1px solid #dcdcdc;
-}
+/* Styling board game */
 .board-game {
     width: 390px;
     height: 390px;
@@ -57,30 +86,31 @@ h1 {
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 33% 33% 33%;
 }
-
 /* adds border to specific divs to show a tic-tac-toe grid */
 .line1.column2.game-on, .line3.column2.game-on{
-    border-left: 3px solid #dcdcdc;
-    border-right: 3px solid #dcdcdc;
+    border-left: 2.5px solid #262626;
+    border-right: 2.5px solid #262626;
 }
 .line2.column1.game-on, .line2.column3.game-on {
-    border-top: 3px solid #dcdcdc;
-    border-bottom: 3px solid #dcdcdc;
+    border-top: 2.5px solid #262626;
+    border-bottom: 2.5px solid #262626;
 }
 .line2.column2.game-on {
-    border: 3px solid #dcdcdc;
+    border: 2.5px solid #262626;
 }
-
-
 /* position the element inside each div on the board*/
 .board-game div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.board-game div:hover {
+    background-color: rgba(227, 211, 201, 0.6);
+}
 .marker{
     font-size: 4em;
 }
+
 button {
     align-self: center;
     padding: 0.25em 1em; /* top&bottom left&right */
@@ -93,6 +123,7 @@ button {
     font-size: 2em;
 }
 
+/* Styling dialog modal */
 dialog {
     text-align: center;
     border-radius: 10px;
@@ -106,9 +137,11 @@ dialog > p {
     font-size: 2em;
 }
 
-@media (max-width: 700px) {
+/* Styling for smaller screens */
+@media (max-width: 870px) {
     h1 {
         order: 0;
+        font-size: 3em;
     }
     .icon-choice{
         order: 1;
@@ -126,14 +159,21 @@ dialog > p {
         flex-direction: column-reverse ;
     }
     .active-player {
-        margin-bottom: 1.5em;;
+        text-align: center;
+        font-size: 2.5em;
+        margin-top: 2px;
+        margin-bottom: 0.5em;
     }
     .score {
-        margin-top: 1.5em;
+        margin-top: 0.8em;
         margin-left: 1em;
+        font-size: 1.2em;
     }
     .board-game {
         margin: auto;
+    }
+    button {
+        color: black;
     }
 
 }
@@ -141,4 +181,10 @@ dialog > p {
 https://cssgridgarden.com/
 https://codepip.com/games/flexbox-froggy/
 https://www.w3schools.com/css/css3_borders.asp
+https://www.w3schools.com/howto/howto_html_favicon.asp
+https://www.favicon.cc/
+https://www.codesdope.com/blog/article/getting-notebook-paper-effect-with-css/
+https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient
+https://developer.mozilla.org/en-US/docs/Web/CSS/:hover
+
 /
