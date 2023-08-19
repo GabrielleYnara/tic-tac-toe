@@ -1,24 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap');
 
 body {
     background-color: #363636;
     color: rgb(219, 219, 219);
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    font-family: 'Indie Flower', cursive;
 }
 
 h1 {
     align-self: center;
+    font-size: 3em;
 }
 .icon-choice{
     display: flex;
     justify-content: center;
 }
 .icon-choice > button {
-    padding: 0.5em 1.5em;
+    padding: 0.25em 1.25em;
     background-color: #b8b7b7;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.3em;
+    font-family: 'Indie Flower', cursive;
+
 }
 .game {
     display: flex;
@@ -26,17 +30,18 @@ h1 {
     visibility: hidden;
 }
 .active-player {
-    width: 118px;
-    font-size: 1.5em;
+    width: 140px;
+    font-size: 1.75em;
     align-self: center;
 }
 .score {
-    width: 118px;
+    width: 140px;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 2em repeat(2, 1.5em);
     grid-gap: 1px;
     text-align: center;
+    font-size: 1.2em;
 }
 .score > h3 {
     grid-column: 1 / 4;
@@ -74,19 +79,25 @@ h1 {
     align-items: center;
 }
 .marker{
-    font-size: 3em;
+    font-size: 4em;
 }
 button {
     align-self: center;
-    padding: 1em 3em; /* top&bottom left&right */
-    margin-top: 4em;
+    padding: 0.25em 1em; /* top&bottom left&right */
     border-radius: 5px;
     font-size: 1em;
+    font-family: 'Amatic SC', cursive;
+}
+#reset{
+    margin-top: 2em;
+    font-size: 2em;
 }
 
 dialog {
     text-align: center;
     border-radius: 10px;
+    font-size: 2em;
+    font-family: 'Amatic SC', cursive;
 }
 dialog > p {
     font-size: 1.5em;
@@ -103,6 +114,9 @@ dialog > p {
         order: 1;
     }
     #reset{
+        margin-top: 0;
+        margin-right: 1em;
+        margin-left: auto;
         order: 3;
     }
     .game {
@@ -112,10 +126,10 @@ dialog > p {
         flex-direction: column-reverse ;
     }
     .active-player {
-        margin-bottom: 2em;;
+        margin-bottom: 1.5em;;
     }
     .score {
-        margin-top: 2em;
+        margin-top: 1.5em;
         margin-left: 1em;
     }
     .board-game {
