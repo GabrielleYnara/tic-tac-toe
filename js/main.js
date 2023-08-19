@@ -37,16 +37,9 @@ oIcon.addEventListener("click", () => {
 
 //Event listeners to highlight the potential spot
 for (child of boardGame.children) {//loops through all the divs
-    // child.addEventListener("mouseenter", handleMouseEnter);
-    // child.addEventListener("mouseleave", handleMouseLeave);
     child.addEventListener("click", handleClick);
 }
-// function handleMouseEnter(element) {
-//     element.target.style.backgroundColor = "rgba(139, 139, 139, 0.2)";
-// }
-// function handleMouseLeave(element) {
-//     element.target.style.backgroundColor = "";
-// }
+
 // The selected location is marked and switches to the other player's turn.
 function handleClick(element) {
     if(!element.target.hasChildNodes() && hasWinner === undefined){ //Just if spot is free

@@ -105,7 +105,7 @@ h1 {
     align-items: center;
 }
 .board-game div:hover {
-    background-color: rgba(227, 211, 201, 0.6);
+    background-color: rgba(233, 219, 211, 0.6);
 }
 .marker{
     font-size: 4em;
@@ -118,6 +118,9 @@ button {
     font-size: 1em;
     font-family: 'Amatic SC', cursive;
 }
+button:hover {
+    box-shadow: inset -5px -5px 27px -20px #686166;
+}
 #reset{
     margin-top: 2em;
     font-size: 2em;
@@ -126,13 +129,18 @@ button {
 /* Styling dialog modal */
 dialog {
     text-align: center;
-    border-radius: 10px;
     font-size: 2em;
     font-family: 'Amatic SC', cursive;
+    box-shadow: 3px 24px 17px -26px #3F3F3F;
+    border-radius: 5px;
 }
 dialog > p {
     font-size: 1.5em;
 }
+dialog > div > button {
+    background-color: transparent;
+}
+
 #gameResult > p {
     font-size: 2em;
 }
@@ -186,5 +194,7 @@ https://www.favicon.cc/
 https://www.codesdope.com/blog/article/getting-notebook-paper-effect-with-css/
 https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient
 https://developer.mozilla.org/en-US/docs/Web/CSS/:hover
+https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_backgrounds_and_borders/Box-shadow_generator
 
 /
