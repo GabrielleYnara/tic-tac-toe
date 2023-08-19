@@ -48,9 +48,6 @@ h1 {
     margin: 0 5px;
 
 }
-.icon-choice > button:hover {
-    background-color: #fcf6f1;
-}
 .game {
     display: flex;
     justify-content: space-around;
@@ -117,9 +114,10 @@ button {
     border-radius: 5px;
     font-size: 1em;
     font-family: 'Amatic SC', cursive;
+    border: 1.5px solid black;
 }
 button:hover {
-    box-shadow: inset -5px -5px 27px -20px #686166;
+    box-shadow: -3px 3px 5px 0px #B5B7B7; /* positionX, positionY, blur, spread, color*/
 }
 #reset{
     margin-top: 2em;
@@ -132,13 +130,17 @@ dialog {
     font-size: 2em;
     font-family: 'Amatic SC', cursive;
     box-shadow: 3px 24px 17px -26px #3F3F3F;
-    border-radius: 5px;
+    background-color: #6ED8FA;
+    border: none;
 }
 dialog > p {
     font-size: 1.5em;
 }
 dialog > div > button {
     background-color: transparent;
+}
+dialog > div > button:hover {
+    box-shadow: -3px 3px 5px 0px #3b8ca7; /* positionX, positionY, blur, spread, color*/
 }
 
 #gameResult > p {
