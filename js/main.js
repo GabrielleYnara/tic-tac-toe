@@ -75,7 +75,7 @@ noResetBtn.addEventListener("click", (event) => {
     confirmReset.close(); //closes the Modal
 });
 //When the user wants to reset the game
-confirmBtn.addEventListener("click", (event) => {
+confirmBtn.addEventListener("click", () => {
     // event.preventDefault(); //doesn't reload the page
     resetBoard("yes");
     confirmReset.close();
