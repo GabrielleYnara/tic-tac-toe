@@ -76,7 +76,7 @@ noResetBtn.addEventListener("click", (event) => {
 });
 //When the user wants to reset the game
 confirmBtn.addEventListener("click", (event) => {
-    event.preventDefault(); //doesn't reload the page
+    // event.preventDefault(); //doesn't reload the page
     resetBoard("yes");
     confirmReset.close();
 });

@@ -9,7 +9,8 @@ body{
     height: 100vh;
 }
 /* styling red vertical line */
-#paper::before {
+@media (min-width: 470px) {
+    #paper::before {
     content: '';
     width: 2px;
     height: 100%;
@@ -17,6 +18,7 @@ body{
     top: 0;
     left: 40px;
     background-color: rgba(255,0,0,0.6);
+    }
 }
 /* styling blue horizontal lines */
 #pattern {
