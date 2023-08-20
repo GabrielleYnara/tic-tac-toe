@@ -7,7 +7,7 @@ const xIcon = document.querySelector("#xIcon");
 const oIcon = document.querySelector("#oIcon");
 const resetBtn = document.querySelector("#reset");
 const boardGame = document.querySelector(".board-game");
-const confirmReset = document.querySelector("#confirmReset"); //Modal
+const confirmReset = document.querySelector("#confirm-reset"); //Modal
 const gameResult = document.querySelector("#gameResult"); //Modal
 const confirmBtn = document.querySelector("#confirmBtn");
 const noResetBtn = document.querySelector("#noResetBtn");
@@ -35,11 +35,10 @@ oIcon.addEventListener("click", () => {
     startGame(game);
 });
 
-//Event listeners to highlight the potential spot
-for (child of boardGame.children) {//loops through all the divs
+//Loops through board game elements and assigns click events to each one
+for (child of boardGame.children) {
     child.addEventListener("click", handleClick);
 }
-
 // The selected location is marked and switches to the other player's turn.
 function handleClick(element) {
     if(!element.target.hasChildNodes() && hasWinner === undefined){ //Just if spot is free
@@ -48,7 +47,7 @@ function handleClick(element) {
         p.className = "marker";
         element.target.append(p);
         game.activeTurn = game.players.find(player => player.name != game.activeTurn.name);
-        document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} 's turn`;
+        displayActivePlayer(); //indicates who's turn is it
         hasWinner = checkWinner();
         if(hasWinner){
             let winner = game.registerScore(hasWinner);
@@ -65,18 +64,16 @@ function handleClick(element) {
     }
 }
 
-//When User clicks on Reset button
+//When User clicks on Restart button
 resetBtn.addEventListener("click", () => {
     resetBoard();
 });
-//if User give up on reseting the board
-noResetBtn.addEventListener("click", (event) => {
-    event.preventDefault(); //Do not submit the form
+//if User give up on restarting the board
+noResetBtn.addEventListener("click", () => {
     confirmReset.close(); //closes the Modal
 });
 //When the user wants to reset the game
 confirmBtn.addEventListener("click", () => {
-    // event.preventDefault(); //doesn't reload the page
     resetBoard("yes");
     confirmReset.close();
 });
@@ -95,7 +92,7 @@ function startGame() {
     for (let child of boardGame.children){ // should I reference boardGame in another way?
         child.classList.add("game-on");
     }
-    document.querySelector(".active-player").innerHTML = `${game.activeTurn.icon} 's turn`; //indicates active player
+    displayActivePlayer(); //indicates who's turn is it
 }
 // cleans the spots
 function resetBoard(option) {
@@ -216,7 +213,10 @@ function showResult(message) {
     gameResult.showModal();
 }
 
+function displayActivePlayer() {
+    document.querySelector(".active-player > span").innerHTML =game.activeTurn.icon;
 
+}
 /** References
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
