@@ -266,12 +266,15 @@ function drawingSound() {
     audio.src = "./assets/drawing-sound.mp3";
     audio.type = "audio/mpeg";
     audio.preload = "auto";
-    audio.currentTime = 2.2;
-    audio.play();
-    setTimeout(() => {
+    audio.addEventListener('loadedmetadata', () => { // Ensures the browser has the metadata before trying to change the currentTime
         audio.currentTime = 2.2;
         audio.play();
-    }, 1000);
+        setTimeout(() => {
+            audio.currentTime = 2.2;
+            audio.play();
+        }, 1000);
+    });
+    
     document.querySelector("body").appendChild(audio);
 }
 
@@ -286,4 +289,6 @@ function drawingSound() {
  * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
+ * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event
+ * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loadedmetadata_event
  */
