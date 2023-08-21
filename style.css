@@ -1,13 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap');
+/* Styling for shaking element */
+@keyframes shaking {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(3deg); }
+    20% { transform: rotate(0deg); }
+    30% { transform: rotate(-3deg); }
+    40% { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-3deg); }
+    80% { transform: rotate(0deg); }
+    90% { transform: rotate(3deg); }
+    100% { transform: rotate(0deg); }
+}
+/* Animation for drawing the horizontal lines */
+@keyframes drawTop {
+    to {
+        border-top-color: #262626;
+    }
+}
+@keyframes drawBottom {
+    to {
+        border-bottom-color: #262626;
+    }
+}
 
-/* Styling paper*/
-body{
-    background-color: #F1EDE9;
+/* Animation for drawing vertical grid */
+@keyframes drawRight {
+    to {
+        border-right-color: #262626;
+    }
 }
-#paper{
-    width: 100%;
-    height: 100vh;
+@keyframes drawLeft {
+    to {
+        border-left-color: #262626;
+    }
 }
+
 /* styling red vertical line */
 @media (min-width: 470px) { /* for screens bigger than 470px*/
     #paper::before {
@@ -19,6 +48,52 @@ body{
     left: 40px;
     background-color: rgba(255,0,0,0.6);
     }
+}
+/* Styling for smaller screens */
+@media (max-width: 870px) {
+    h1 {
+        order: 0;
+        font-size: 3em;
+    }
+    .icon-choice{
+        order: 1;
+    }
+    #reset{
+        margin-top: 0;
+        margin-right: 1em;
+        margin-left: auto;
+        order: 3;
+    }
+    .game {
+        order: 2;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column-reverse ;
+    }
+    .active-player {
+        text-align: center;
+        margin-top: 2px;
+        margin-bottom: 0.5em;
+    }
+    .score {
+        margin-top: 0.8em;
+        margin-left: 1em;
+        font-size: 1.2em;
+    }
+    .board-game {
+        margin: auto;
+    }
+    button {
+        color: black;
+    }
+}
+/* Styling paper*/
+body{
+    background-color: #F1EDE9;
+}
+#paper{
+    width: 100%;
+    height: 100vh;
 }
 /* styling blue horizontal lines */
 #pattern {
@@ -90,6 +165,15 @@ h1 {
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 33% 33% 33%;
 }
+/* position the element inside each div on the board*/
+.board-game div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board-game div:hover {
+    background-color: rgba(233, 219, 211, 0.6);
+}
 
 /* adds border to specific divs to show a tic-tac-toe grid */
 .line1.column2.game-on, .line3.column2.game-on{
@@ -103,17 +187,26 @@ h1 {
 .line2.column2.game-on {
     border: 2.5px solid #262626;
 }
-
-/* position the element inside each div on the board*/
-.board-game div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Styling draw lines animation
+/* Initial state: all borders are transparent */
+.line1.column2.game-on.transparent, .line3.column2.game-on.transparent,
+.line2.column1.game-on.transparent, .line2.column3.game-on.transparent,
+.line2.column2.game-on.transparent {
+    border-color: transparent;
 }
-.board-game div:hover {
-    background-color: rgba(233, 219, 211, 0.6);
+/* Applying the animations with delay */
+.vertical-lines {
+    animation: drawLeft 0.2s 0.1s forwards, drawRight 0.2s 0.4s forwards;
 }
-
+.middle-div {
+    animation: drawLeft 0.2s 0.1s forwards, 
+        drawRight 0.2s 0.4s forwards,
+        drawTop 0.2s 1.1s forwards, 
+        drawBottom 0.2s 1.3s forwards;
+}
+.horizontal-lines {
+    animation: drawTop 0.2s 1.1s forwards, drawBottom 0.2s 1.3s forwards; 
+} 
 .marker{
     font-size: 4em;
 }
@@ -156,97 +249,10 @@ dialog > div > button:hover {
 #gameResult > p {
     font-size: 2em;
 }
-
-/* Styling for smaller screens */
-@media (max-width: 870px) {
-    h1 {
-        order: 0;
-        font-size: 3em;
-    }
-    .icon-choice{
-        order: 1;
-    }
-    #reset{
-        margin-top: 0;
-        margin-right: 1em;
-        margin-left: auto;
-        order: 3;
-    }
-    .game {
-        order: 2;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column-reverse ;
-    }
-    .active-player {
-        text-align: center;
-        margin-top: 2px;
-        margin-bottom: 0.5em;
-    }
-    .score {
-        margin-top: 0.8em;
-        margin-left: 1em;
-        font-size: 1.2em;
-    }
-    .board-game {
-        margin: auto;
-    }
-    button {
-        color: black;
-    }
-}
-/* Styling draw lines animation */
-/* Initial state: all borders are transparent */
-.line1.column2.game-on, .line3.column2.game-on,
-.line2.column1.game-on, .line2.column3.game-on,
-.line2.column2.game-on {
-    border-color: transparent;
-}
-/* Animation for drawing the horizontal lines */
-@keyframes drawTop {
-    to {
-        border-top-color: #262626;
-    }
-}
-@keyframes drawBottom {
-    to {
-        border-bottom-color: #262626;
-    }
+.board-game > .shakeIt {
+    animation: shaking 1s;
 }
 
-/* Animation for drawing vertical grid */
-@keyframes drawRight {
-    to {
-        border-right-color: #262626;
-    }
-}
-@keyframes drawLeft {
-    to {
-        border-left-color: #262626;
-    }
-}
-
-/* Applying the animations with delay */
-.line1.column2.game-on,  .line3.column2.game-on {
-    animation: drawLeft 0.2s 0.1s forwards, drawRight 0.2s 0.4s forwards;
-}
-.line2.column2.game-on{
-    animation: drawLeft 0.2s 0.1s forwards, 
-        drawRight 0.2s 0.4s forwards,
-        drawTop 0.2s 1.1s forwards, 
-        drawBottom 0.2s 1.3s forwards;
-}
-.line2.column1.game-on, .line2.column3.game-on {
-    animation: drawTop 0.2s 1.1s forwards, drawBottom 0.2s 1.3s forwards; 
-}
-
-@keyframes tilt-shaking {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
-}
 /** References
 https://cssgridgarden.com/
 https://codepip.com/games/flexbox-froggy/
@@ -260,5 +266,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_backgrounds_and_borders/Box-shadow_generator
 https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Tips
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+
 /
 

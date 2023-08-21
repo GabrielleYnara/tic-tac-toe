@@ -38,6 +38,15 @@ oIcon.addEventListener("click", () => {
 //Loops through board game elements and assigns click events to each one
 for (child of boardGame.children) {
     child.addEventListener("click", handleClick);
+    child.addEventListener("animationend",(element) => {// removes the transparent class once the first animation is done
+        setTimeout(() => {
+            element.target.classList.remove("transparent");
+            element.target.classList.remove("vertical-lines");
+            element.target.classList.remove("middle-div");
+            element.target.classList.remove("horizontal-lines")
+        }, 1500);
+        
+    })
 }
 // The selected location is marked and switches to the other player's turn.
 function handleClick(element) {
@@ -63,6 +72,10 @@ function handleClick(element) {
             showResult("It's a Tie!");
         }
     } else {
+        element.target.classList.add("shakeIt"); //CSS animation
+        setTimeout(() => {
+            element.target.classList.remove("shakeIt");
+        }, 1500);
         
     }
 }
@@ -89,6 +102,7 @@ playAgain.addEventListener("click", () => {
     resetBoard("yes");
     gameResult.close();
 });
+
 // habilitates the grid (boardgame)
 function startGame() {
     drawingSound();
@@ -98,6 +112,19 @@ function startGame() {
         child.classList.add("game-on");
     }
     displayActivePlayer(); //indicates who's turn is it
+
+    //add classes to run CSS animations the beginning of the game
+    let verticalLines = document.querySelectorAll(".line1.column2.game-on,  .line3.column2.game-on");
+    let middleDiv = document.querySelector(".line2.column2.game-on");
+    let horizontalLines = document.querySelectorAll(".line2.column1.game-on, .line2.column3.game-on");
+    verticalLines.forEach((element) => {
+        element.classList.add("vertical-lines");
+    });
+    middleDiv.classList.add("middle-div");
+    horizontalLines.forEach((element) => {
+        element.classList.add("horizontal-lines");
+    });
+    
 }
 // cleans the spots
 function resetBoard(option) {
