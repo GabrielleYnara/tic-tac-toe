@@ -69,7 +69,8 @@ function handleClick(element) {
 
 //When User clicks on Restart button
 resetBtn.addEventListener("click", () => {
-    resetBoard();
+    //on going game, confirms if the User wants to restart
+    confirmReset.showModal();
 });
 //if User give up on restarting the board
 noResetBtn.addEventListener("click", () => {
@@ -100,10 +101,6 @@ function startGame() {
 }
 // cleans the spots
 function resetBoard(option) {
-    //on going game, confirms if the User wants to restart
-    if (!hasWinner) {
-        confirmReset.showModal();
-    }
     if (!option) { //to avoid undefined error when option is empty
         option = "";
     }

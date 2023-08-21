@@ -239,6 +239,14 @@ dialog > div > button:hover {
 .line2.column1.game-on, .line2.column3.game-on {
     animation: drawTop 0.2s 1.1s forwards, drawBottom 0.2s 1.3s forwards; 
 }
+
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
 /** References
 https://cssgridgarden.com/
 https://codepip.com/games/flexbox-froggy/
