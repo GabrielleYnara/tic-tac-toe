@@ -46,6 +46,7 @@ function handleClick(element) {
         p.innerHTML = game.activeTurn.icon;
         p.className = "marker";
         element.target.append(p);
+        element.target.classList.add("marked");
         game.activeTurn = game.players.find(player => player.name != game.activeTurn.name);
         displayActivePlayer(); //indicates who's turn is it
         hasWinner = checkWinner();
@@ -262,7 +263,6 @@ function playSuccess() {
 function drawingSound() {
     //create the audio element
     const audio = new Audio();
-    console.log("here")
     audio.src = "./assets/drawing-sound.mp3";
     audio.type = "audio/mpeg";
     audio.preload = "auto";
@@ -289,6 +289,6 @@ function drawingSound() {
  * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
- * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loadedmetadata_event
+ * 
  */
