@@ -37,7 +37,10 @@ oIcon.addEventListener("click", () => {
 
 //Loops through board game elements and assigns click events to each one
 for (child of boardGame.children) {
-    child.addEventListener("click", handleClick);
+    child.addEventListener("click", (element) => {
+        handleClick(element);
+        aiTurn();
+    });
     child.addEventListener("animationend",(element) => {// removes the transparent class once the first animation is done
         setTimeout(() => {
             element.target.classList.remove("transparent");
@@ -136,6 +139,7 @@ function resetBoard(option) {
         positions.forEach(element => {
             if (element.children.length) { //if it was populated
                 element.innerHTML = "";
+                element.classList.remove("marked");
             }
         });
         hasWinner = undefined;
@@ -245,6 +249,34 @@ function showResult(message) {
 function displayActivePlayer() {
     document.querySelector(".active-player > span").innerHTML = game.activeTurn.icon;
 
+}
+//Simulates an oponent
+function aiTurn(){
+    if (hasWinner === undefined){
+        //assign to a random free spot
+        let randomIndex = Math.floor(Math.random() * boardGame.children.length);
+        console.log("randomIndex " + randomIndex + ": ")
+        console.log(boardGame.children[randomIndex]);
+        if (boardGame.children[randomIndex].classList.contains("marked")){
+            do{
+                if (randomIndex < 8){
+                    randomIndex++;
+                } else {
+                    randomIndex = 0;
+                }
+                console.log("loop: new index " + randomIndex);
+                console.log(boardGame.children[randomIndex]);
+            } while (boardGame.children[randomIndex].classList.contains("marked"));
+        }
+        // create a fake event object with a target property
+        let fakeEvent = {
+            target: boardGame.children[randomIndex]
+        }; 
+        setTimeout(() => {
+            // pass the fake event to handleClick
+            handleClick(fakeEvent);
+        }, 500); // half second delay
+    }
 }
 
 /** Audio Copy rights
