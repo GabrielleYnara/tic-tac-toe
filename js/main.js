@@ -40,8 +40,12 @@ oIcon.addEventListener("click", () => {
 //Loops through board game elements and assigns click events to each one
 for (child of boardGame.children) {
     child.addEventListener("click", (element) => {
-        handleClick(element);
-        aiTurn();
+        let validClick = false;
+        validClick = handleClick(element);
+        console.log(validClick);
+        if(validClick){
+            aiTurn();
+        }
     });
     child.addEventListener("animationend",(element) => {// removes the transparent class once the first animation is done
         setTimeout(() => {
@@ -76,12 +80,13 @@ function handleClick(element) {
         if (hasWinner === "Tie") {
             showResult("It's a Tie!");
         }
+        return true;
     } else {
         element.target.classList.add("shakeIt"); //CSS animation
         setTimeout(() => {
             element.target.classList.remove("shakeIt");
         }, 1500);
-        
+        return false;
     }
 }
 
