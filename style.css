@@ -37,6 +37,18 @@
     }
 }
 
+/* Styling active player panel*/
+.active-player {
+    width: 200px;
+    height: 1.75em;
+    align-self: center;
+    font-size: 2.5em;
+    margin-top: -2px;
+}
+.active-player > span {
+    font-size: 1.35em;
+}
+
 /* styling red vertical line */
 @media (min-width: 470px) { /* for screens bigger than 470px*/
     #paper::before {
@@ -58,6 +70,9 @@
     .icon-choice{
         order: 1;
     }
+    #choice-label{
+        margin-top: 2px;
+    }
     #reset{
         margin-top: 0;
         margin-right: 1em;
@@ -72,11 +87,11 @@
     }
     .active-player {
         text-align: center;
-        margin-top: 2px;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.4em;
+        margin-top: -16px;
     }
     .score {
-        margin-top: 0.8em;
+        margin-top: -0.3em;
         margin-left: 1em;
         font-size: 1.2em;
     }
@@ -118,6 +133,7 @@ h1 {
     order: 1;
     display: flex;
     justify-content: center;
+    margin-top: -4px;
 }
 .icon-choice > button {
     padding: 0.25em 1.25em;
@@ -132,16 +148,7 @@ h1 {
     justify-content: space-around;
     visibility: hidden;
 }
-/* Styling active player panel*/
-.active-player {
-    width: 200px;
-    height: 1.75em;
-    align-self: center;
-    font-size: 2.5em;
-}
-.active-player > span {
-    font-size: 1.35em;
-}
+
 /* Styling Score panel*/
 .score {
     width: 200px;
@@ -154,7 +161,10 @@ h1 {
 }
 .score > h3 {
     grid-column: 1 / 4;
-    margin-top: 25px;
+    margin-top: 26px;
+}
+.score p {
+    margin-top: -3px;
 }
 
 /* Styling board game */
