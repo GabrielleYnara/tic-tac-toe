@@ -22,6 +22,7 @@ xIcon.addEventListener("click", () => {
     oIcon.setAttribute("hidden", "true");
     document.querySelector("#choice-label").style.display = "none";
     resetBtn.removeAttribute("hidden");
+    player2.name = "AI Player";
     startGame(game);// game already starts with X playing
 });
 
@@ -31,6 +32,7 @@ oIcon.addEventListener("click", () => {
     oIcon.setAttribute("hidden", "true");
     document.querySelector("#choice-label").style.display = "none";
     resetBtn.removeAttribute("hidden");
+    player1.name = "AI Player";
     game.activeTurn = player2;
     startGame(game);
 });
@@ -142,6 +144,12 @@ function resetBoard(option) {
                 element.classList.remove("marked");
             }
         });
+        game.activeTurn = hasWinner;
+        displayActivePlayer();
+        if (hasWinner && hasWinner.name === ("AI Player")){
+            hasWinner = undefined;
+            aiTurn();
+        }
         hasWinner = undefined;
     }
 }
