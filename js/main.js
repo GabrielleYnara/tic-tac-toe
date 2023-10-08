@@ -264,8 +264,6 @@ function aiTurn(){
         boardGame.style.pointerEvents = "none";
         //assign to a random free spot
         let randomIndex = Math.floor(Math.random() * boardGame.children.length);
-        console.log("randomIndex " + randomIndex + ": ")
-        console.log(boardGame.children[randomIndex]);
         if (boardGame.children[randomIndex].classList.contains("marked")){
             do{
                 if (randomIndex < 8){
@@ -273,8 +271,6 @@ function aiTurn(){
                 } else {
                     randomIndex = 0;
                 }
-                console.log("loop: new index " + randomIndex);
-                console.log(boardGame.children[randomIndex]);
             } while (boardGame.children[randomIndex].classList.contains("marked"));
         }
         // create a fake event object with a target property
