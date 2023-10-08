@@ -56,3 +56,7 @@ _Current Progress_: All features implemented except for the AI opponent.
 
 ## Feedback
 If you have any feedback or suggestions, feel free to open an issue. Contributions are always welcome!
+
+### Acknowledgments
+This project was created as a part of the Software Engineering Immersive program offered by General Assembly.  
+It served as practice for: JavaScript, HTML and CSS
