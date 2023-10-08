@@ -253,6 +253,7 @@ function displayActivePlayer() {
 //Simulates an oponent
 function aiTurn(){
     if (hasWinner === undefined){
+        boardGame.style.pointerEvents = "none";
         //assign to a random free spot
         let randomIndex = Math.floor(Math.random() * boardGame.children.length);
         console.log("randomIndex " + randomIndex + ": ")
@@ -275,6 +276,7 @@ function aiTurn(){
         setTimeout(() => {
             // pass the fake event to handleClick
             handleClick(fakeEvent);
+            boardGame.style.pointerEvents = "auto";
         }, 500); // half second delay
     }
 }
