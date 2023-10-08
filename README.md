@@ -50,7 +50,7 @@ _Current Progress_: All features implemented except for the AI opponent.
 * **Responsiveness**: Play on any device! The game is designed to adapt and look great whether you're on a desktop, tablet, or mobile device.
 
 ## Room for Improvement
-* **AI Opponent**: Introduce a computer opponent for single-player mode.
+* **AI Opponent**: Upgrade the computer opponent for a smarter model.
 * **Online Multiplayer**: Allowing two players to play against each other online.
 * **Persist Data**: Allow games to continue after page refresh or loss of internet connectivity.
 
